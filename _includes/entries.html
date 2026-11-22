@@ -1,0 +1,35 @@
+{%- comment -%}
+  Renders a list from _data/ (papers, projects, positions, degrees).
+  Each item may have: title, date, org, note (shown after org), coauthors or
+  supervisors (list of names), description (Markdown), links (list of {label, url}).
+{%- endcomment -%}
+<ul class="entries">
+{%- for item in include.items %}
+  {%- assign names = item.coauthors | default: item.supervisors %}
+  <li class="entry">
+    <div class="entry-head">
+      <span class="entry-title">{{ item.title }}</span>
+      {%- if item.date %}
+      <span class="entry-date">{{ item.date }}</span>
+      {%- endif %}
+    </div>
+    {%- if item.org or item.note or names %}
+    <div class="entry-meta">
+      {%- if item.org %}{{ item.org }}{% endif -%}
+      {%- if item.note %}{% if item.org %} &middot; {% endif %}{{ item.note }}{% endif -%}
+      {%- if names %}{% if item.org or item.note %} &middot; {% endif %}with {% include people.html names=names %}{% endif -%}
+    </div>
+    {%- endif %}
+    {%- if item.description %}
+    <div class="entry-desc">{{ item.description | markdownify }}</div>
+    {%- endif %}
+    {%- if item.links %}
+    <div class="entry-links">
+      {%- for link in item.links %}
+      <a href="{{ link.url | escape }}">{{ link.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </li>
+{%- endfor %}
+</ul>

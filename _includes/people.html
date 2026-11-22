@@ -1,0 +1,9 @@
+{%- comment -%}
+  Renders a list of names as "A and B" or "A, B, and C", linking each name
+  that has a URL in _data/people.yml.
+{%- endcomment -%}
+{%- for name in include.names -%}
+  {%- assign url = site.data.people[name] -%}
+  {%- if url %}<a href="{{ url | escape }}">{{ name }}</a>{% else %}{{ name }}{% endif -%}
+  {%- if forloop.rindex == 2 -%}{% if forloop.length > 2 %},{% endif %} and {% elsif forloop.rindex > 2 %}, {% endif -%}
+{%- endfor -%}

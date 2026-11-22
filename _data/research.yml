@@ -1,0 +1,13 @@
+# Each entry may have: title, date, coauthors (names from people.yml),
+# description (Markdown), links (list of label + url).
+
+working_papers:
+  - title: "Employer-Provided Training, Wage Growth, and Motherhood Penalty: Evidence from Taiwan"
+    coauthors: [Alice Wu, Kuan-Ming Chen, Ming-Jen Lin]
+    links:
+      - label: Draft
+        url: "https://www.dropbox.com/scl/fi/3hx2i1u9hsk2nsdreh5xi/CHLW_training_in_taiwan.pdf?rlkey=o8vz2bsfyhetjgpe5oggevjs2&e=1&dl=0"
+
+work_in_progress:
+  - title: "Subsidizing Richs for Luxurious Toys? The Impact of Electric Vehicle Subsidies in Taiwan"
+    coauthors: [Cheng-Han Tsai, Joonkyo Hong, Kuan-Ming Chen]

@@ -1,0 +1,295 @@
+/* Site styles. Colors are tokens on :root. */
+
+:root {
+  --bg: #ffffff;
+  --text: #1f1f1f;
+  --muted: #5b5e65;
+  --faint: #85888f;
+  --rule: #e6e5e1;
+  --rule-strong: #cfcdc7;
+  --accent: #1e4d8c;
+  --accent-hover: #0f3466;
+  --underline: #b9c8de;
+
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --zh: "Noto Serif TC", "Songti TC", "Noto Serif CJK TC", "PMingLiU", serif;
+  --sidebar: 19rem;   /* left panel width */
+  --measure: 42rem;   /* right panel text width */
+
+  color-scheme: light;
+}
+
+/* Base */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 106.25%; /* 17px */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s, text-decoration-color 0.15s, border-color 0.15s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--underline); }
+
+/* Two panels: the left panel stays in place while the page scrolls. */
+
+.page {
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 1fr);
+  max-width: calc(var(--sidebar) + var(--measure) + 5.5rem);
+  margin: 0 auto;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 4.5rem 2.25rem 2rem 1.5rem;
+  border-right: 1px solid var(--rule);
+}
+
+.content {
+  min-width: 0;
+  padding: 4.5rem 2rem 0 3.5rem;
+}
+
+/* Left panel: name and contact */
+
+.site-name {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+
+.site-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.name-zh {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--zh);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.site-position {
+  margin: 1.5rem 0 0;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.site-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+.site-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.site-contact a:hover span { text-decoration: underline; }
+
+.icon {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  color: #000; /* GitHub's logo rules allow its mark only in black, white or grey */
+}
+
+/* Right panel: sections */
+
+main p { margin: 0 0 1rem; }
+
+main h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 3rem 0 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+main > h2:first-child { margin-top: 0.6rem; }
+
+main h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.notice { margin-top: 0.6rem; }
+
+/* Lists of papers and degrees */
+
+.entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry + .entry { margin-top: 1.4rem; }
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.entry-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.entry-date {
+  flex: none;
+  font-size: 0.9rem;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.entry-meta {
+  margin-top: 0.15rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.entry-desc {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.entry-desc p { margin: 0; }
+
+.entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.entry-links a {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.entry-links a:hover { border-color: currentColor; }
+
+/* Footer, at the end of the right panel */
+
+.site-footer p {
+  margin: 4rem 0 0;
+  padding: 1.25rem 0 3rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--faint);
+}
+
+/* Narrow screens: stack the panels */
+
+@media (max-width: 860px) {
+  .page { display: block; }
+  .sidebar {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: 2.75rem 1.25rem 1.75rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .content { padding: 2.25rem 1.25rem 0; }
+  main > h2:first-child { margin-top: 0; }
+}
+
+@media (max-width: 600px) {
+  html { font-size: 100%; }
+  .site-name { font-size: 1.85rem; }
+  .entry-head {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Print */
+
+@media print {
+  :root {
+    --text: #000;
+    --muted: #333;
+    --faint: #555;
+    --accent: #000;
+    --underline: transparent;
+  }
+  .page { display: block; }
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 0 0 1rem;
+    border: 0;
+  }
+  .content { padding: 0; }
+  .site-footer { display: none; }
+}

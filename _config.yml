@@ -1,2 +1,27 @@
-theme: jekyll-theme-minimal
+# Browser-tab and search-result title. The name panel is built from `author`.
 title: Bo-Yan Huang 黃柏諺
+lang: en-US
+url: https://bo-yan-huang.github.io
+
+author:
+  name: Bo-Yan Huang
+  name_zh: 黃柏諺
+  position: M.A. Student in Economics
+  affiliation: National Taiwan University
+  email: boyanhuangwork@gmail.com
+  github: Bo-Yan-Huang
+
+# No gem theme: the layout and styles are in _layouts/ and assets/css/.
+# (Leaving `theme` out would make GitHub Pages fall back to its Primer theme.)
+theme: null
+
+# index.md starts with a heading; don't let it become the browser-tab title.
+titles_from_headings:
+  enabled: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
